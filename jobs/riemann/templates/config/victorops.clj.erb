@@ -54,7 +54,7 @@
 ; redefine alert method
 <% if_p("riemann.victorops.apikey") do %>
 (def alert
-  (let [vo (victorops "<%= p("riemann.victorops.apikey") %>", "<%= p("riemann.victorops.routingkey") %>")]
+  (let [vo (victorops "<%= p("riemann.victorops.apikey") %>" "<%= p("riemann.victorops.routingkey") %>")]
     (where (not (state "expired"))
       (changed-state {:init "ok"}
         (stable <%= p("riemann.victorops.stable-time") %> :state
